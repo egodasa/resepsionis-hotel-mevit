@@ -123,32 +123,7 @@ export default{
 				{name: "nm_pemesan", title:"Nama", sortField : "nm_pemesan"},
 				{name: "alamat", title:"Alamat", sortField : "alamat"},
 				{name: "kontak", title:"Kontak", sortField : "kontak"}
-				//~ {name: "__slot:aksi", title:"Aksi"}
 			]
-			//~ form : {
-				//~ model : {
-					//~ nm_tkamar : null,
-					//~ hrg_tkamar : null
-				//~ },
-				//~ error : {
-					//~ nm_tkamar : null,
-					//~ hrg_tkamar : null
-				//~ },
-				//~ fields : [
-					//~ {
-						//~ name:'nm_tkamar',
-						//~ label:'Nama Tipe Kamar',
-						//~ type : 'input',
-						//~ inputType : 'text'
-					//~ },
-					//~ {
-						//~ name:'hrg_tkamar',
-						//~ label:'Tarif',
-						//~ type : 'input',
-						//~ inputType : 'number'
-					//~ }
-				//~ ]
-			//~ }
 		}
 	}
 }
