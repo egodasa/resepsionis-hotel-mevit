@@ -53,17 +53,20 @@ class TipeKamar extends Controller
         $data = new \stdclass;
 		$insert = [
 			"nm_tkamar"			=> $req->input('nm_tkamar'),
-			"hrg_tkamar"		=> $req->input('hrg_tkamar')
+			"hrg_tkamar"		=> $req->input('hrg_tkamar'),
+			"kapasitas"			=> $req->input('kapasitas')
 		];
 		$validate = [
 			"nm_tkamar"			=> "bail|required|max:50",
-		    "hrg_tkamar"		=> "bail|required|numeric"
+		    "hrg_tkamar"		=> "bail|required|numeric",
+		    "kapasitas"			=> "bail|required|numeric"
 	    ];
 		$validator = \Validator::make($insert, $validate);
 		if($validator->fails()){
 			$errors = $validator->errors();
 			$data->error = [
 				"nm_tkamar"			=> $errors->first('nm_tkamar'),
+			    "kapasitas"			=> $errors->first('kapasitas'),
 			    "hrg_tkamar"		=> $errors->first('hrg_tkamar')
 			];
 			$data->status_code = "422";

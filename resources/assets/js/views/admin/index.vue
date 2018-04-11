@@ -17,7 +17,7 @@
 
 <script>
 
-import content from '../../components/spa/content.vue'
+
 import { dataMix } from './dataMix.js'
 export default{
 	name : 'indexAdmin',

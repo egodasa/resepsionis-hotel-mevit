@@ -95,7 +95,7 @@
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
-import formGenerator from '../../components/spa/formGenerator.vue'
+
 import { dataMix } from './dataMix.js'
 
 
@@ -118,15 +118,18 @@ export default{
 				{name: "id_tkamar", title:"ID", sortField : "id_tkamar",visible:false},
 				{name: "nm_tkamar", title:"Tipe Kamar", sortField : "nm_tkamar"},
 				{name: "hrg_tkamar", title:"Tarif", sortField : "hrg_tkamar"},
+				{name: "kapasitas", title:"Kapasitas", sortField : "hrg_tkamar"},
 				{name: "__slot:aksi", title:"Aksi"}
 			],
 			form : {
 				model : {
 					nm_tkamar : null,
+					kapasitas : null,
 					hrg_tkamar : null
 				},
 				error : {
 					nm_tkamar : null,
+					kapasitas : null,
 					hrg_tkamar : null
 				},
 				fields : [
@@ -135,6 +138,12 @@ export default{
 						label:'Nama Tipe Kamar',
 						type : 'input',
 						inputType : 'text'
+					},
+					{
+						name:'kapasitas',
+						label:'Kapasitas Kamar',
+						type : 'input',
+						inputType : 'number'
 					},
 					{
 						name:'hrg_tkamar',

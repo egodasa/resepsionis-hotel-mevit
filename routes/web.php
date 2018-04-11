@@ -11,62 +11,11 @@
 |
 */
 
-Route::get('vue', function () {
-    return view('halamanvue');
-});
-Route::get('vue2', function () {
-    return view('halamanvue2');
-});
-Route::get('form', function () {
-    return view('halamanform');
-});
-Route::get('tabel', function () {
-    return view('tabel');
-});
-Route::get('list', function () {
-    return view('list');
-});
-Route::get('tabs', function () {
-    return view('tabs');
-});
-
-
 Route::get('/', function () {
-    return view('admin/index');
+    return view('index');
 });
+
 Route::post('/api/login','API\admin\User@cekLogin');
-
-Route::group(['prefix'=>'admin'],function(){
-	Route::get('/','Admin@index');
-	Route::get('/dosen',function (){
-		return view('admin/kelolaDosen');
-	});
-	Route::get('/mahasiswa',function (){
-		return view('admin/kelolaMahasiswa');
-	});
-	Route::get('/jenis-soal',function (){
-		return view('admin/kelolaJsoal');
-	});
-	Route::get('/jenis-ujian',function (){
-		return view('admin/kelolaJujian');
-	});
-	Route::get('/kelas',function (){
-		return view('admin/kelolaKelas');
-	});
-	Route::get('/matkul',function (){
-		return view('admin/kelolaMatkul');
-	});
-});
-
-Route::group(['prefix'=>'dosen/{nidn}'],function($nidn){
-	Route::get('/','Dosen@index');
-	Route::get('/kuliah',function ($nidn){
-		return view('dosen/kelolaKuliah',["_NIDN"=>$nidn]);
-	});
-	Route::get('/ujian',function ($nidn){
-		return view('dosen/kelolaUjian',["_NIDN"=>$nidn]);
-	});
-});
 
 //START OF ADMIN API
 Route::group(['prefix'=>'api/daftar-kamar'],function(){
@@ -96,10 +45,8 @@ Route::group(['prefix'=>'api/user'],function(){
 
 //EOF API ADMIN
 
-//START OF DOSEN API
-Route::group(['prefix'=>'api/dosen/{nidn}'],function($nidn){
-	Route::get('/kuliah',['uses'=>'API\dosen\Kuliah@index']);
-	Route::post('/kuliah',['uses'=>'API\dosen\Kuliah@store']);
-	Route::get('/ujian',['uses'=>'API\dosen\Ujian@index']);
-});
-//EOF DOSEN API
+//API RESEPSIONIS
+Route::get('/api/pilih-kamar/{id}','API\resepsionis\PilihKamar@index');
+Route::post('/api/transaksi','API\resepsionis\Transaksi@tambahTransaksi');
+Route::get('/api/transaksi','API\resepsionis\Transaksi@index');
+Route::get('/api/transaksi/detail/{id}','API\resepsionis\Transaksi@detailTransaksi');

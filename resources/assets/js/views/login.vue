@@ -3,7 +3,7 @@
 <template slot="contentHeader">
 	<div class="login-box">
 	  <div class="login-logo">
-	    <a href=""><b>Admin</b>LTE</a>
+	    <a href="">HOTEL <b>MEVIT</b></a>
 	  </div>
 	  <!-- /.login-logo -->
 	  <div class="login-box-body" id="app">
@@ -52,7 +52,7 @@ export default{
 						if(res.data.status == true){
 							this.$lcs.setLcs('info_login',res.data.data[0])
 							if(res.data.data[0].tipe == 'Admin') this.$router.push('/admin')
-							else if(res.data.data[0].tipe == 'Resepsionis') this.$router.push('/user')
+							else if(res.data.data[0].tipe == 'Resepsionis') this.$router.push('/transaksi')
 						}
 						this.toggleFormLogin()
 					})

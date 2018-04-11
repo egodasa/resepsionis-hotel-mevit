@@ -14,6 +14,7 @@ class DaftarKamar extends Controller
      * @return \Illuminate\Http\Response
      */
     public $tablePk = 'id_kamar';
+    public $tableView = 'daftar_kamar';
     public $table = "tb_daftar_kamar";
     public function index(Request $req)
     {
@@ -33,7 +34,7 @@ class DaftarKamar extends Controller
 			$data->status_code = "422";
 		}else{
 			if(isset($sort)) $sort = explode('|',$sort);
-			$base_kueri = DB::table($this->table);
+			$base_kueri = DB::table($this->tableView);
 			$kueri = $base_kueri->
 				when($sort, function ($query) use ($sort) {
 							return $query->orderBy($sort[0], substr($sort[1],0,4));
@@ -53,13 +54,11 @@ class DaftarKamar extends Controller
         $data = new \stdclass;
 		$insert = [
 			"no_kamar"		=> $req->input('no_kamar'),
-			"kapasitas"		=> $req->input('kapasitas'),
 			"status_kamar"  => $req->input('status_kamar'),
 			"id_tkamar"  	=> $req->input('id_tkamar')
 		];
 		$validate = [
 			"no_kamar"		=> "bail|required|max:10",
-			"kapasitas"		=> "bail|required|numeric",
 			"status_kamar"		=> ["bail","required","regex:/[Kosong|Sedang Dipakai|Perbaikan]/"],
 			"id_tkamar"  	=>	"bail|required|numeric"
 	    ];
@@ -68,7 +67,6 @@ class DaftarKamar extends Controller
 			$errors = $validator->errors();
 			$data->error = [
 				"no_kamar"		=> $errors->first('no_kamar'),
-				"kapasitas"		=> $errors->first('kapasitas'),
 				"status_kamar"  => $errors->first('status_kamar'),
 				"id_tkamar"  => $errors->first('id_tkamar')
 			];

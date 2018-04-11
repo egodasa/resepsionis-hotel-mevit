@@ -95,7 +95,7 @@
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
-import formGenerator from '../../components/spa/formGenerator.vue'
+
 import { dataMix } from './dataMix.js'
 
 

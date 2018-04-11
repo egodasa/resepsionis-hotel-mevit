@@ -9,6 +9,11 @@
 	</slot>
 </footer>
 </template>
+<!--
+	Daftar slot :
+	1. footer
+		Untuk membuat isi footer
+-->
 <script>
 export default {
 	

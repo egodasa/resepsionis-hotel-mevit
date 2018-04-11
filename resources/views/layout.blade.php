@@ -21,18 +21,6 @@
     <body class="skin-blue sidebar-mini">
 		@yield('content')
     <script src="/js/app.js"></script>
-    <script>
-    let dataMix = {}
-    </script>
-    @yield('vuedata')
-	<!--Ganti dataMenu.js dibawah ini sesuai kebutuhan. Karena isi menu diletakkan difile dibawah ini.-->
-    <script src="/js/dataMenuContoh.js"></script> 
-    <script>
-	const app = new Vue({
-		el : "#app",
-		mixins : [dataMix,dataMenu]
-	})
-	</script>
     <script src="/js/app_adminlte.js"></script>
     </body>
 </html>

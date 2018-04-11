@@ -95,7 +95,7 @@
 import Vuetable from 'vuetable-2/src/components/Vuetable'
 import VuetablePagination from 'vuetable-2/src/components/VuetablePagination'
 import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePaginationInfo'
-import formGenerator from '../../components/spa/formGenerator.vue'
+
 import { dataMix } from './dataMix.js'
 
 
@@ -116,20 +116,18 @@ export default{
 				{name: "__sequence", title:"No"},
 				{name: "id_kamar", title:"ID", sortField : "id_kamar",visible:false},
 				{name: "no_kamar", title:"No Kamar", sortField : "no_kamar"},
-				{name: "kapasitas", title:"Kapasitas", sortField : "kapasitas"},
 				{name: "nm_tkamar", title:"Tipe Kamar", sortField : "nm_tkamar"},
+				{name: "status_kamar", title:"Status Kamar", sortField : "status_kamar"},
 				{name: "__slot:aksi", title:"Aksi"}
 			],
 			form : {
 				model : {
 					no_kamar : null,
-					kapasitas : null,
 					id_tkamar : null,
 					status_kamar : null
 				},
 				error : {
 					no_kamar : null,
-					kapasitas : null,
 					id_tkamar : null,
 					status_kamar : null
 				},
@@ -141,24 +139,12 @@ export default{
 						inputType : 'text'
 					},
 					{
-						name: 'group_input',
-						items : [
-							{
-								name:'kapasitas',
-								label:'Kapasitas Kamar',
-								type : 'input',
-								inputType : 'number',
-								col: 6
-							},
-							{
-								name:'id_tkamar',
-								label:'Tipe Kamar',
-								type : 'select',
-								col: 6,
-								optionLabel : 'nm_tkamar',
-								option : []
-							}
-						]
+						name:'id_tkamar',
+						label:'Tipe Kamar',
+						type : 'select',
+						col: 6,
+						optionLabel : 'nm_tkamar',
+						option : []
 					},
 					{
 						name:'status_kamar',
@@ -178,7 +164,7 @@ export default{
 	created (){
 			axios.get('/api/tipe-kamar')
 				.then(res=>{
-					this.form.fields[1].items[1].option = res.data.data
+					this.form.fields[1].option = res.data.data
 				})
 				.catch(err=>{
 					this.$notify.error('Tidak dapat mengambil daftar tipe kamar. Silahkan refresh halaman!')

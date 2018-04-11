@@ -5,36 +5,38 @@
  */
 import './bootstrap'
 import Vue from 'vue'
-//~ import tabs from './components/master/tabs.vue'
-//~ import tab from './components/master/tab.vue'
-//~ import alert from './components/master/alert.vue'
-//~ import formGenerator from './components/master/formGenerator.vue'
+//~ import tabs from './components/tabs.vue'
+//~ import tab from './components/tab.vue'
+//~ import alert from './components/alert.vue'
+//~ import formGenerator from './components/formGenerator.vue'
 import Notify from 'vue2-notify'
 import store from 'store'
 import vuecookies from 'vue-cookies'
 import VueRouter from 'vue-router'
 
-
-
 import login from './views/login.vue'
 
 import adminLayout from './views/admin/layout.vue'
+import resepsionisLayout from './views/resepsionis/layout.vue'
 import baseLayout from './views/layout.vue'
 
 //Halaman admin
 import indexAdmin from 		'./views/admin/index.vue'
 import daftarKamar from 	'./views/admin/KelolaDaftarKamar.vue'
 import tipeKamar from 		'./views/admin/kelolaTipeKamar.vue'
-import daftarPemesan from 	'./views/admin/kelolaDaftarPemesan.vue'
 import kelolaUser from 		'./views/admin/kelolaUser.vue'
 
+//halaman resepsionis
+import transaksi from 		'./views/resepsionis/transaksi.vue'
+import daftarTransaksi from 		'./views/resepsionis/daftarTransaksi.vue'
+
 //GLOBAL COMPONENTS
-import content from './components/spa/content.vue'
-import header from './components/spa/header.vue'
-import sidebar from './components/spa/sidebar.vue'
-import footer from './components/spa/footer.vue'
-import formGenerator from './components/master/formGenerator.vue'
-import modal from './components/master/modal.vue'
+import content from './components/content.vue'
+import header from './components/header.vue'
+import sidebar from './components/sidebar.vue'
+import footer from './components/footer.vue'
+import formGenerator from './components/formGenerator.vue'
+import modal from './components/modal.vue'
 
 window.Vue = Vue;
 
@@ -113,12 +115,22 @@ const routes = [{
 				component: tipeKamar
 			},
 			{
-				path: 'daftar-pemesan',
-				component: daftarPemesan
-			},
-			{
 				path: 'user',
 				component: kelolaUser
+			}
+		]
+	},
+	{
+		path: '/transaksi',
+		component: resepsionisLayout,
+		children : [
+			{
+				path: '',
+				component: transaksi
+			},
+			{
+				path: 'list',
+				component: daftarTransaksi
 			}
 		]
 	}
