@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
-
+Route::get('/pdf', 'Laporan@index');
 Route::post('/api/login','API\admin\User@cekLogin');
 
 //START OF ADMIN API
