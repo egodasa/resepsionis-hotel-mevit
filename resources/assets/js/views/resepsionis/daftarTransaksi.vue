@@ -174,6 +174,7 @@ export default{
 				{name: "tgl_checkout", title:"Waktu Check Out", sortField : "tgl_checkout",callback : function(val){
 					return format(val, 'dddd, d MMMM YYYY h:m:s', {locale: lokalisasi})
 				}},
+				{name: "total_harga", title:"Total Bayar", sortField : "total_harga"},
 				{name: "__slot:aksi", title:"Aksi"}
 			],
 			selected_transaksi : {}
