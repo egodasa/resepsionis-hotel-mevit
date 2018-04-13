@@ -12,6 +12,7 @@ class Transaksi extends Controller
     public $table = "tb_pesan";
     public function index(Request $req)
     {
+		DB::statement("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'");
 		$validateQueryString = [
 			"per_page"		=> "bail|sometimes|numeric|min:1",
 			"page"		=> "bail|sometimes|numeric|min:1",
@@ -27,11 +28,12 @@ class Transaksi extends Controller
 			$data->status_code = "422";
 		}else{
 			if(isset($sort)) $sort = explode('|',$sort);
-			$base_kueri = DB::table($this->table);
+			$base_kueri = DB::table($this->table)->select(DB::raw("tb_pesan.*, sum(tb_pesan_detail.total_harga) as total_harga"))->join('tb_pesan_detail','tb_pesan.id_pesan','=','tb_pesan_detail.id_pesan');
 			$kueri = $base_kueri->
 				when($sort, function ($query) use ($sort) {
 							return $query->orderBy($sort[0], substr($sort[1],0,4));
 		                });
+		    $base_kueri->groupBy('tb_pesan_detail.total_harga');
 		    if($per_page || $page){
 				$data = $kueri->paginate($per_page ?: 10);
 			}else {

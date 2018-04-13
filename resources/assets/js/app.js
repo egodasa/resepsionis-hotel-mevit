@@ -88,15 +88,10 @@ const localStorage = {
 Vue.prototype.$lcs = localStorage
 Vue.prototype.$cks = cks
 
-const routes = [{
-		path: '/',
-		component: baseLayout,
-		children : [
-			{
-				path : '/',
-				component : login
-			}
-		]
+const routes = [
+	{
+		path : '/',
+		component : login
 	},
 	{
 		path: '/admin',
