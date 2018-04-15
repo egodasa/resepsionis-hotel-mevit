@@ -9,7 +9,7 @@
 				<button class="btn btn-primary" @click="modalCetak = !modalCetak">Cetak Laporan</button>
 				<modal :show="modalCetak" title="Cetak Laporan">
 					<template slot="modalBody">
-						<form action="/pdf" method="GET">
+						<form action="/laporan" method="GET">
 							<datepicker label="Pilih waktu awal" :bootstrap-styling.Boolean="true" name="start" format="yyyy-MM-dd" placeholder="Dari..."></datepicker>
 							<datepicker label="Pilih waktu akhir" :bootstrap-styling.Boolean="true" name="finish" format="yyyy-MM-dd" placeholder="Ke..."></datepicker>
 							<button type="submit" class="btn btn-primary">Cetak</button>
