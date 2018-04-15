@@ -58,7 +58,7 @@ class User extends Controller
 			"tipe"			=> $req->input('tipe')
 		];
 		$validate = [
-			"username"		=>	"bail|required|max:10",
+			"username"		=>	"bail|required|max:15",
 			"password"		=>	"bail|required|max:12",
 			"status"		=>	"bail|numeric",
 			"tipe"			=>	["bail","required","regex:/[Admin|Resepsionis]/"]

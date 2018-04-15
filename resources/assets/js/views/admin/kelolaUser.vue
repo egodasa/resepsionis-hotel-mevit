@@ -150,7 +150,8 @@ export default{
 						type : 'select',
 						option : [
 							{tipe: "Admin"},
-							{tipe: "Resepsionis"}
+							{tipe: "Resepsionis"},
+							{tipe: "Manajer"}
 						],
 						optionLabel: "tipe"
 					}

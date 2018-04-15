@@ -55,6 +55,7 @@ export default{
 							this.$lcs.setLcs('info_login',res.data.data[0])
 							if(res.data.data[0].tipe == 'Admin') this.$router.push('/admin')
 							else if(res.data.data[0].tipe == 'Resepsionis') this.$router.push('/transaksi')
+							else if(res.data.data[0].tipe == 'Manajer') this.$router.push('/manajer/laporan')
 						}
 						this.toggleFormLogin()
 					})

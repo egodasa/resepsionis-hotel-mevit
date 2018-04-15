@@ -37,7 +37,13 @@ h1{
 		echo "<tr>";
 		echo "<td>$x</td>";
 				foreach($fields as $r){
-					echo "<td> ".$d->{$r['name']}."</td>";
+					if($r['name'] == 'tgl_checkin' || $r['name'] == 'tgl_checkout'){
+						$date = date_create($d->{$r['name']});
+						echo "<td> ".date_format($date,"d F Y")."</td>";
+					}else if($r['name'] == 'total_harga'){
+						echo "<td> "."Rp ".number_format($d->{$r['name']},2,',','.')."</td>";
+					}
+					else echo "<td> ".$d->{$r['name']}."</td>";
 				}
 		echo "</tr>";
 		$x++;
@@ -46,6 +52,6 @@ h1{
 	?>
 	<tr>
 		<td colspan="<?php echo count($fields); ?>">Total</td>
-		<td><?php echo $total; ?></td>
+		<td><?php echo "Rp ".number_format($total,2,',','.'); ?></td>
 	</tr>
 </table>

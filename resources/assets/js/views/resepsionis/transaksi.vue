@@ -3,77 +3,89 @@
 	<template slot="content">
 		<div class="box-header with-border">
 			<div class="pull-left">
-				<h3>Transaksi</h3>
+				<h3 class="box-title">Transaksi</h3>
 			</div>
 		</div>
 		<div class="box-body">
 			<div class="row">
 				<div class="col-xs-2">
-					<label>Kewarganegaraan</label> 
-					<select class="form-control" v-model="kewarganegaraan">
-						<option v-for="list in listKewarganegaraan" :value="list">{{list}}</option>
-					</select>
+					<div class="form-group">
+						<label>Kewarganegaraan</label> 
+						<select class="form-control" v-model="kewarganegaraan">
+							<option v-for="list in listKewarganegaraan" :value="list">{{list}}</option>
+						</select>
+					</div>
 				</div>
 				<div class="col-xs-10">
-					<label for="formInputno_identitas">No Identitas</label>
-					<input id="formInputno_identitas" type="text" class="form-control" v-model="no_identitas">
-					<p class="help-block text-red"></p>
+					<div class="form-group">
+						<label for="formInputno_identitas">No Identitas</label>
+						<input id="formInputno_identitas" type="text" class="form-control" v-model="no_identitas">
+					</div>
 				</div>
 				
 				<div class="col-xs-6">
-					<label>Nama Pemesan</label> 
-					<input type="text" class="form-control" v-model="nm_pemesan">
-					<p class="help-block text-red"></p>
+					<div class="form-group">
+						<label>Nama Pemesan</label> 
+						<input type="text" class="form-control" v-model="nm_pemesan">
+					</div>
 				</div>
 				<div class="col-xs-6">
-					<label>Kontak [NOHP/Email/Fax]</label>
-					<input type="text" class="form-control" v-model="kontak">
-					<p class="help-block text-red"></p>
+					<div class="form-group">
+						<label>Kontak [NOHP/Email/Fax]</label>
+						<input type="text" class="form-control" v-model="kontak">
+					</div>
 				</div>
-				
+			</div>
+			<hr>
+			<div class="row">	
 				<div class="col-xs-6">
 					<datepicker label="Tanggal Check In" v-model="tgl_checkin" placeholder="Pilih Tanggal" :bootstrap-styling.Boolean="true"></datepicker>
 				</div>
-				<div class="col-xs-6">
-					<datepicker label="Tanggal Check Out" v-model="tgl_checkout" placeholder="Pilih Tanggal" :bootstrap-styling.Boolean="true"></datepicker>
-				</div>
 				
-				<div class="col-xs-4">
-					<label class="col-md-4 control-label">Tipe Kamar</label> 
-					<div class="col-md-8">
+				<div class="col-xs-3">
+					<div class="form-group">
+						<label>Tipe Kamar</label> 
 						<select class="form-control" v-model="tipe_kamar" @change="cariNoKamar(tipe_kamar.id_tkamar)">
 							<option v-for="list in listTipeKamar" :key="list.id_tkamar" :value="list">{{list.nm_tkamar}}</option>
 						</select>
 					</div>
 				</div>
-				<div class="col-xs-4">
-					<label class="col-md-4 control-label">Nomor Kamar</label>
-					<div class="col-md-8"> 
+				<div class="col-xs-3">
+					<div class="form-group">
+						<label>Nomor Kamar</label>
 						<input type="text" class="form-control" v-model="no_kamar" readonly>
 					</div>
 				</div>
-				<div class="col-xs-4">
+				
+				<div class="col-xs-6">
+					<datepicker label="Tanggal Check Out" v-model="tgl_checkout" placeholder="Pilih Tanggal" :bootstrap-styling.Boolean="true"></datepicker>
+				</div>
+				
+				<div class="col-xs-6">
+					<label class="control-label">Banyak Orang</label>
 					<div class="input-group">
 						<input id="formInputtotal_orang" type="number" class="form-control" v-model="total_orang" readonly>
-						<span class="input-group-addon">Orang</span>
-						<span class="input-group-addon btn-success" @click="tambahOrang()" :disabled="no_kamar == 'null' || no_kamar.length > 5">+</span>
-						<span class="input-group-addon btn-danger" @click="kurangOrang()" :disabled="no_kamar == 'null' || no_kamar.length > 5">-</span>
+						<span class="input-group-btn">
+							<button class="btn btn-success" @click="tambahOrang()" :disabled="no_kamar == 'null' || no_kamar.length > 5"><span class="glyphicon glyphicon-plus"></span></button>
+							<button class="btn btn-danger" @click="kurangOrang()" :disabled="no_kamar == 'null' || no_kamar.length > 5"><span class="glyphicon glyphicon-minus"></span></button>
+						</span>
 					</div>
-					<p class="help-block text-red"></p>
 				</div>
 				
 				<div class="col-xs-12">
-					<label>Total Bayar</label>
+					<div class="form-group">
+						<label>Total Bayar</label>
 						<input id="formInputtotal_bayar_kamar" type="number" class="form-control" v-model="total_bayar_kamar">
-						<p class="help-block text-red"></p>
+					</div>
 				</div>
 			</div>
 			<div class="pull-right">
 				<button class="btn btn-primary" @click="tambahKamar()">Tambah</button>
 				<button class="btn btn-danger" @click="resetKamar()">Reset</button>
+				<hr>
 			</div>
-			<h3>Kamar yang dipesan</h3>
-			<table class="table table-bordered">
+			<h4>Kamar yang dipesan</h4>
+			<table class="table table-bordered table-striped table-condensed">
 				<thead>
 					<tr>
 						<th>No</th>
@@ -87,7 +99,7 @@
 				<tbody>
 					<template v-if="listKamarDipesan.length == 0">
 						<tr>
-							<td colspan=5>Tidak Ada kamar</td>
+							<td colspan=6>Tidak Ada kamar</td>
 						</tr>
 					</template>
 					<template v-else>
@@ -102,6 +114,7 @@
 					</template>
 				</tbody>
 			</table>
+			<hr>
 			<div class="form-group">
 				<label>Total Yang Harus Dibayarkan</label>
 				<input type="number" v-model="total_bayar" class="form-control" readonly>

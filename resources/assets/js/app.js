@@ -18,7 +18,7 @@ import login from './views/login.vue'
 
 import adminLayout from './views/admin/layout.vue'
 import resepsionisLayout from './views/resepsionis/layout.vue'
-import baseLayout from './views/layout.vue'
+import manajerLayout from './views/manajer/layout.vue'
 
 //Halaman admin
 import indexAdmin from 		'./views/admin/index.vue'
@@ -29,6 +29,9 @@ import kelolaUser from 		'./views/admin/kelolaUser.vue'
 //halaman resepsionis
 import transaksi from 		'./views/resepsionis/transaksi.vue'
 import daftarTransaksi from 		'./views/resepsionis/daftarTransaksi.vue'
+
+//halaman manajer
+import laporanTransaksi from 	'./views/manajer/daftarTransaksi.vue'
 
 //GLOBAL COMPONENTS
 import content from './components/content.vue'
@@ -128,7 +131,18 @@ const routes = [
 				component: daftarTransaksi
 			}
 		]
-	}
+	},
+	{
+		path: '/manajer',
+		component: manajerLayout,
+		children : [
+			{
+				path: 'laporan',
+				component: laporanTransaksi
+			}
+		]
+	},
+	
 ]
 
 const router = new VueRouter({

@@ -9,11 +9,17 @@ class Laporan extends Controller
 {
     public function index(Request $req)
     {
+		$start = $req->query('start');
+		$finish = $req->query('finish');
+		$waktu = [$start, $finish];
 		DB::statement("set sql_mode = 'STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'");
 		$lap = DB::table('tb_pesan')
 		->select(DB::raw("tb_pesan.*, sum(tb_pesan_detail.total_harga) as total_harga"))
 		->join('tb_pesan_detail','tb_pesan.id_pesan','=','tb_pesan_detail.id_pesan')
-		->groupBy('tb_pesan_detail.total_harga')->get();
+		->groupBy('tb_pesan_detail.total_harga')
+		->when($start, function ($query) use ($waktu) {
+			return $query->whereBetween(DB::raw('date(tgl_checkin)'), [$waktu[0], $waktu[1]]);
+		})->get();
 		$data = [
 			"fields"=> [
 				[
