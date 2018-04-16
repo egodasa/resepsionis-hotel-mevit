@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'default' => 'pgsql',
-    //~ 'default' => env('DB_CONNECTION', 'pgsql'),
+    //~ 'default' => 'pgsql',
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,11 +57,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host'     => env('DB_HOST', '127.0.0.1'),
+            'host'     => 'ec2-54-83-19-244.compute-1.amazonaws.com',
             'port' =>'5432',
-		    'database' => 'dbmevit',
-		    'username' => 'postgres',
-		    'password' => 'qwe123*iop',
+		    'database' => 'd5sjppgjvnrq50',
+		    'username' => 'qzrjhqpmfrifzw',
+		    'password' => '3faff0800e034b29dbebc01bbfd973a6d7417ea3846152d5c808dc2f378c01dd',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',

@@ -61,3 +61,35 @@ b.hrg_tkamar AS hrg_tkamar,
 b.kapasitas AS kapasitas 
 from tb_daftar_kamar a join
  tb_tipe_kamar b on a.id_tkamar = b.id_tkamar;
+ 
+INSERT INTO tb_daftar_kamar (id_kamar, no_kamar, id_tkamar, status_kamar) VALUES
+(1,	'JS1',	4,	'Kosong'),
+(2,	'JS2',	4,	'Kosong'),
+(3,	'JS3',	4,	'Kosong'),
+(4,	'SD1',	5,	'Sedang Dipakai'),
+(5,	'SD2',	5,	'Sedang Dipakai'),
+(6,	'S1',	8,	'Kosong'),
+(7,	'JS4',	4,	'Kosong'),
+(8,	'D1',	6,	'Kosong'),
+(9,	'D2',	6,	'Kosong'),
+(10,	'SP1',	7,	'Kosong'),
+(11,	'SP2',	7,	'Kosong'),
+(12,	'SP3',	7,	'Kosong'),
+(13,	'ST1',	8,	'Kosong'),
+(14,	'ST2',	8,	'Kosong'),
+(15,	'ST3',	8,	'Kosong');
+
+TRUNCATE tb_tipe_kamar;
+INSERT INTO tb_tipe_kamar (id_tkamar, nm_tkamar, hrg_tkamar, kapasitas) VALUES
+(4,	'Junior Suite',	450000,	2),
+(5,	'Super Deluxe',	425000,	2),
+(6,	'Deluxe',	375000,	2),
+(7,	'Superior',	300000,	2),
+(8,	'Standart',	275000,	2);
+
+TRUNCATE tb_user;
+INSERT INTO tb_user (id_user, username, password, status, tipe) VALUES
+(4,	'admin',	'*4ACFE3202A5FF5CF467898FC58AAB1D615029441',	1,	'Admin'),
+(5,	'resepsionis',	'*AE10FA862CD285BEF08CFB66D3CFED6F508FD5C1',	1,	'Resepsionis'),
+(6,	'manajer',	'*82586FD06B0649061D04584A682AD855E4FEA19D',	1,	'Manajer');
+
