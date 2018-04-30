@@ -16,7 +16,7 @@ export default{
 		return {
 			menu : [
 					{
-						url : '/',
+						url : '/admin',
 						icon : 'fa fa-home',
 						text : 'Beranda'
 					},

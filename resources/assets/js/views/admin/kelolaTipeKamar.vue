@@ -3,7 +3,7 @@
 	<template slot="content">
 		<div class="box-header with-border">
 			<div class="pull-left">
-				<h3>Tipe Tipe Kamar</h3>
+				<h3>Daftar Tipe Kamar</h3>
 			</div>
 			<div class="pull-right">
 				<button class="btn btn-primary" @click="modalStatus = !modalStatus">+ Tambah Data Baru</button>
@@ -34,27 +34,10 @@
 				</select> Data</label>
 				</div>
 			</div>
-			<div class="col-sm-4 col-xs-12">
+			<div class="col-sm-8 col-xs-12">
 				<div class="dataTables_paginate paging_simple_numbers pull-left" id="example1_paginate">
 					<vuetable-pagination ref="pagination" @vuetable-pagination:change-page="onChangePage" :css="pagination">
 					</vuetable-pagination>
-				</div>
-			</div>
-			<div class="col-sm-4 col-xs-12">
-				<div class="pull-right">
-					<div class="input-group">
-						<input v-model="search" type="text" class="form-control" placeholder="Search" @keyup.enter="onSearch(search)">
-						<div class="input-group-btn">
-							<button @click="onSearch(search)" class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-							</button>
-						</div>
-						<div class="input-group-btn">
-							<button @click="onResetSearch" class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-remove"></i>
-							</button>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

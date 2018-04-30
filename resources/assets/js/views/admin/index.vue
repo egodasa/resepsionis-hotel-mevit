@@ -9,7 +9,12 @@
 			</div>
 		</div>
 		<div class="box-body">
-			Ini adalah beranda admin...
+			Sebelum menggunakan aplikasi, harap entrikan data berikut ini :
+            <ol>
+                <li>Data user, agar orang lain bisa menggunakan aplikasi</li>
+                <li>Data tipe kamar, agar data kamar bisa ditambahkan</li>
+                <li>Data kamar, agar transaksi bisa dilakukan oleh resepsionis</li>
+            </ol>
 		</div>
 	</template>
 </content-section>

@@ -48,5 +48,5 @@ create VIEW `daftar_kamar` AS select
 `b`.`nm_tkamar` AS `nm_tkamar`,
 `b`.`hrg_tkamar` AS `hrg_tkamar`,
 `b`.`kapasitas` AS `kapasitas` 
-from (`tb_daftar_kamar` `a` join
- `tb_tipe_kamar` `b` on((`a`.`id_tkamar` = `b`.`id_tkamar`);
+from `tb_daftar_kamar` `a` join
+ `tb_tipe_kamar` `b` on `a`.`id_tkamar` = `b`.`id_tkamar`;
