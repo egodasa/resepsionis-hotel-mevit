@@ -1,3 +1,6 @@
+# Demo 
+http://resepsionis.mandan.online
+
 # Login
 1. Admin : username & pass -> admin
 2. Resepsionis : username & pass -> resepsionis
